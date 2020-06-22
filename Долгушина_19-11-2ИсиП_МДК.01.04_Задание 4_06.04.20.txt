@@ -1,0 +1,56 @@
+#include <iostream>
+
+#include <cstdlib>
+
+#include <ctime>
+
+using namespace std;
+
+int rand(int a, int b)
+{
+	int rand_num = 0;
+
+	do
+	{
+		rand_num = rand() % b + 1;
+	} while (rand_num < a);
+	return rand_num;
+}
+
+int main()
+
+{
+	srand((unsigned)time(NULL));
+	int mas[10][10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			mas[i][j] = rand(1,1000);
+			cout << mas[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	int min;
+	int max;
+	min = mas[0][0];
+	max = mas[0][0];
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (mas[i][j] > max) max = mas[i][j];
+			if (mas[i][j] < min) min = mas[i][j];
+		}
+		
+	}
+		
+	cout << "max = " << max << endl;
+	cout << "min = " << min << endl;
+
+	return 0;
+
+}
